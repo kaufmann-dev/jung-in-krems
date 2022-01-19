@@ -2,6 +2,30 @@
     import Navbar from './Navbar.svelte';
     import Footer from './Footer.svelte';
     import Sidebar from './Sidebar.svelte';
+
+    let root = {
+        name: 'Dashboard',
+        href: '/dashboard',
+    }
+
+    let data = [
+        {
+            name: 'Konten',
+            href: '/dashboard/accounts',
+        },
+        {
+            name: 'Events',
+            href: '/dashboard/events',
+        },
+        {
+            name: 'Bildungseinrichtungen',
+            href: '/dashboard/facilities',
+        },
+        {
+            name: 'Anträge',
+            href: '/dashboard/requests',
+        }
+    ];
 </script>
 
 <svelte:head>
@@ -12,11 +36,11 @@
 </svelte:head>
 
 <Navbar />
-<div class="tw-flex-grow">
-    <div class="mx-2 tw-h-full">
-        <div class="tw-flex tw-flex-row tw-gap-4 tw-h-full">
-            <Sidebar />
-            <div class="tw-overflow-hidden tw-w-full">
+<div class="tw-flex-grow"> <!-- tw-flex tw-justify-center -->
+    <div class="container tw-h-full"> <!-- tw-max-w-screen-xl tw-px-3 -->
+        <div class="tw-flex tw-flex-col lg:tw-flex-row tw-h-full">
+            <Sidebar root={root} data={data} />
+            <div class="lg:tw-ml-3 tw-overflow-hidden tw-w-full px-0 tw-mt-3 lg:tw-mt-0">
                 <slot/>
             </div>
         </div>
